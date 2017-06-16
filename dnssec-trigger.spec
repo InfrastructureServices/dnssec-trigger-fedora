@@ -14,7 +14,13 @@ Source0: %{name}-%{version}_%{svn_snapshot}.tar.gz
 # https://bugzilla.redhat.com/show_bug.cgi?id=1112248
 Requires: NetworkManager >= 0.9.9.95-1
 Requires: ldns >= 1.6.10, NetworkManager-glib, unbound
-BuildRequires: openssl-devel, ldns-devel, python3-devel
+%if 0%{?fedora} >= 26
+BuildRequires: compat-openssl10-devel
+%else
+BuildRequires: openssl-devel
+%endif
+BuildRequires: ldns-devel
+BuildRequires: python3-devel
 BuildRequires: NetworkManager-devel
 
 BuildRequires: systemd
